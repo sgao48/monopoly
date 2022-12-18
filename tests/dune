@@ -1,0 +1,10 @@
+(test
+  (name tests)
+  (libraries
+    ounit2
+    property
+    gameboard
+    player
+    game
+  )
+)

@@ -1,0 +1,111 @@
+(library
+  (name property)
+  (modules
+    property)
+  (preprocess (pps bisect_ppx))
+)
+
+(library
+  (name player)
+  (modules
+    player)
+  (libraries
+    property
+    spectrum
+  )
+  (preprocess (pps bisect_ppx))
+)
+
+(library
+  (name gameboard)
+  (modules
+    gameboard)
+  (libraries
+    property
+    game
+  )
+)
+
+(library
+  (name game)
+  (modules
+    game)
+  (libraries
+    core
+    property
+    player
+    spectrum
+  )
+  (preprocess (pps bisect_ppx))
+)
+
+(library
+  (name card)
+  (modules
+    card)
+  (libraries
+    property
+    player
+    game
+    spectrum
+  )
+)
+
+(library
+  (name print)
+  (modules print)
+  (libraries
+    ANSITerminal
+    spectrum
+    player
+    property
+    game
+    core
+  )
+)
+
+(library
+  (name real)
+  (modules real)
+  (libraries
+    ANSITerminal
+    spectrum
+    player
+    property
+    game
+    print
+    core
+  )
+)
+
+(library
+  (name ai)
+  (modules ai)
+  (libraries
+    ANSITerminal
+    spectrum
+    player
+    property
+    game
+    print
+    core
+  )
+)
+
+(executable
+  (name main)
+  (public_name monopoly)
+  (modules main)
+  (libraries
+    ANSITerminal
+    spectrum
+    property
+    player
+    game
+    gameboard
+    print
+    ai
+    real
+    card
+  )
+)
